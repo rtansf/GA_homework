@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+
+import argparse
+from hw1 import *
+
+#
+#  Parses command line and returns classifier name, classifier, minFolds and maxFolds
+#
+def getCommandLineArgs() :
+   parser = argparse.ArgumentParser()
+   parser.add_argument('-c', help='Classifer to use.', choices=['KNN', 'Naive-Bayes'], required=True)
+   parser.add_argument('-minf', help='Minimum number of folds', type=int, required=True)
+   parser.add_argument('-maxf', help='Maximum number of folds', type=int, required=True)
+   args = parser.parse_args()
+   
+   if args.c == 'KNN' :
+      classifier = knn
+   elif args.c == 'Naive-Bayes':
+      classifier = nb
+   
+   minFolds = args.minf
+   maxFolds = args.maxf
+   if (minFolds < 2) :
+      print 'Minimum folds must be >= 2'
+      quit()
+   elif (maxFolds > len(XX)) :
+      print 'Maximum folds must be <= %s' % len(XX)
+      quit()
+   elif (maxFolds <= minFolds) :
+      print "Minimum folds must be < maxiumum folds"
+      quit()
+
+   return (args.c, classifier, minFolds, maxFolds) 
+
+# Load Iris data set.
+(XX,yy,y)=load_iris_data()
+
+# Getclassifer to use, min number of folds and max number of folds from command line
+(classifierName, classifier, minFolds, maxFolds) = getCommandLineArgs()
+
+best_cv_a = 0  # Current best average score
+best_n = 0     # Current best number of folds associated with best average score
+
+print "Using classifier: " + classifierName
+
+# Iterate over each k_fold and perform cross-validation
+for n in range (minFolds,maxFolds) :
+   # cross_validate returns average accuracy score. 
+   cv_a = cross_validate(XX, yy, classifier, k_fold=n)
+
+   # keep track of the best average score encountered so far
+   if cv_a >  best_cv_a :
+      best_cv_a = cv_a
+      best_n = n
+
+   print "fold <<%s>> :: average accuracy score <<%s>>" % (n, cv_a)
+
+# We have finished iterating over all n folds, now print the result
+print "Highest Accuracy: fold <<%s>> :: <<%s>>" % (best_n, best_cv_a) 
+
+
