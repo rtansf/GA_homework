@@ -1,5 +1,0 @@
-For example, to run cross-validation, using KNN classifier, using k-folds from 2 to 40, enter the following:
-  ./xvalidate -c KNN -minf 2 -maxf 40
-
-For example, to run cross-validation, using Naive-Bayes classifier, using k-folds from 2 to 40, enter the following:
-  ./xvalidate -c Naive-Bayes -minf 2 -maxf 40
