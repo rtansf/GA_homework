@@ -1,0 +1,50 @@
+Problem Description and Solution
+--------------------------------
+We want to find the optimal regression parameter (regularization strength) "c" when running cross validation using Logistic Regression against the Iris dataset..
+
+
+How to run xvalidate using Logistic Regression
+----------------------------------------------
+
+For example, to run cross-validation, using Logistic Regression with regularization strength of 1.0 and using k-folds from 2 to 12, enter the 
+following:
+
+./xvalidate -c Logit -minf 2 -maxf 12 -regf 1.0
+
+Outputs:
+
+Using classifier: Logit
+fold <<2>> :: average accuracy score <<0.306666666667>>
+fold <<3>> :: average accuracy score <<0.0>>
+fold <<4>> :: average accuracy score <<0.624110953058>>
+fold <<5>> :: average accuracy score <<0.753333333333>>
+fold <<6>> :: average accuracy score <<0.72>>
+fold <<7>> :: average accuracy score <<0.851576994434>>
+fold <<8>> :: average accuracy score <<0.846125730994>>
+fold <<9>> :: average accuracy score <<0.859885620915>>
+fold <<10>> :: average accuracy score <<0.88>>
+fold <<11>> :: average accuracy score <<0.893606393606>>
+Highest Accuracy: fold <<11>> :: <<0.893606393606>>
+
+For example, to run cross-validation, using Logistic Regression with regularization strength of 0.5 and using k-folds from 2 to 12, enter the 
+following:
+
+./xvalidate -c Logit -minf 2 -maxf 12 -regf 0.5
+
+Outputs:
+
+Using classifier: Logit
+fold <<2>> :: average accuracy score <<0.3>>
+fold <<3>> :: average accuracy score <<0.0>>
+fold <<4>> :: average accuracy score <<0.536984352774>>
+fold <<5>> :: average accuracy score <<0.646666666667>>
+fold <<6>> :: average accuracy score <<0.633333333333>>
+fold <<7>> :: average accuracy score <<0.818181818182>>
+fold <<8>> :: average accuracy score <<0.799342105263>>
+fold <<9>> :: average accuracy score <<0.800653594771>>
+fold <<10>> :: average accuracy score <<0.853333333333>>
+fold <<11>> :: average accuracy score <<0.841158841159>>
+Highest Accuracy: fold <<10>> :: <<0.853333333333>>
+
+
+
