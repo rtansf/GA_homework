@@ -1,0 +1,37 @@
+1. Problem to be solved
+
+Given a MIDI sound file of a piece of classical music, classify the piece by the period to which it
+ belongs. In Western classical music, the periods are: Renaissance, Baroque, Classical, Romantic and 
+Modern. This is an example of music classification.
+
+2. Description of Dataset
+
+The dataset will consist of a corpus of works (in MIDI files) sourced from www.piano-midi.de and 
+www.classicalmidiconnection,com. The python library, music21 will be used to convert the MIDI files 
+into musical Score objects which can then be used to extract quantifiable features. Examples of 
+features would be mean and standard deviation of pitches, note durations, tempo, divergence from the 
+original key (the fraction of notes that do not belong in the musical scale of the original key).
+
+
+3. Hypothesis
+
+The hypothesis is based on the assumption that each classical period  has its individual style which
+ can be quantified into features mentioned above. The model could be trained to recognize the
+features which are associated with a period and be able to predict the period to which a piece belongs.
+
+4. Algorithms
+
+This is a categorical classification problem, and given that the number of features are relatively few,
+I will use the supervised learning models such as KNN, Naive-Bayes. I will also use an
+unsupervised clustering algorithm such as KMeans to compare against the supervised ones.
+
+5. Applications for the finding
+
+Music recommender systems
+Organizing musical databases
+
+
+
+    
+
+ 
